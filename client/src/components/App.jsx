@@ -144,131 +144,23 @@ class App extends React.Component {
 
   getStars(stars) {
     if (stars === 1) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/joRV605.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/joRV605.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/joRV605.png"
-        });
-      }
+      return "https://i.imgur.com/joRV605.png";
     } else if (stars === 1.5) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/fqHSmyz.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/fqHSmyz.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/fqHSmyz.png"
-        });
-      }
+      return "https://i.imgur.com/fqHSmyz.png";
     } else if (stars === 2) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/GsBh9O5.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/GsBh9O5.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/GsBh9O5.png"
-        });
-      }
+      return "https://i.imgur.com/GsBh9O5.png";
     } else if (stars === 2.5) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/HHk4ca7.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/HHk4ca7.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/HHk4ca7.png"
-        });
-      }
+      return "https://i.imgur.com/HHk4ca7.png";
     } else if (stars === 3) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/eXa2t1X.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/eXa2t1X.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/eXa2t1X.png"
-        });
-      }
+      return "https://i.imgur.com/eXa2t1X.png";
     } else if (stars === 3.5) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/nDcH9au.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/nDcH9au.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/nDcH9au.png"
-        });
-      }
+      return "https://i.imgur.com/nDcH9au.png";
     } else if (stars === 4) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/v2Ep8kQ.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/v2Ep8kQ.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/v2Ep8kQ.png"
-        });
-      }
+      return "https://i.imgur.com/v2Ep8kQ.png";
     } else if (stars === 4.5) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/e2b0NN4.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/e2b0NN4.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/e2b0NN4.png"
-        });
-      }
+      return "https://i.imgur.com/e2b0NN4.png";
     } else if (stars === 5) {
-      if (this.state.starRating1 === null) {
-        this.setState({
-          starRating1: "https://i.imgur.com/327Fh6y.png"
-        });
-      } else if (this.state.starRating2 === null) {
-        this.setState({
-          starRating2: "https://i.imgur.com/327Fh6y.png"
-        });
-      } else if (this.state.starRating3 === null) {
-        this.setState({
-          starRating3: "https://i.imgur.com/327Fh6y.png"
-        });
-      }
+      return "https://i.imgur.com/327Fh6y.png";
     }
   }
 
