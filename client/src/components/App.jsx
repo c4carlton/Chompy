@@ -73,7 +73,7 @@ class App extends React.Component {
           const postalCode = this.state.business[0].postal_code;
           const bizId = this.state.business[0].id;
           this.setState({ postalCode: postalCode });
-          this.fetchBusinessIds(postcalCode);
+          this.fetchBusinessData(postcalCode);
         })
         .catch(err => {
           console.log(err, "this is the error in componentDidMount");
@@ -81,23 +81,27 @@ class App extends React.Component {
     }
   }
 
-  fetchBusinessIds(postalCode) {
+  fetchBusinessData(postalCode) {
     axios
       .get("/sidebar/postalCode/" + postalCode)
       .then(response => {
         var biz1 = response.data[1];
         var biz2 = response.data[2];
         var biz3 = response.data[3];
-        this.setState({ matchBiz1: biz1, matchBiz2: biz2, matchBiz3: biz3 });
-        this.setStars(biz1.stars);
-        this.setStars(biz2.stars);
-        this.setStars(biz3.stars);
-        this.fetchTips(this.state.matchBiz1.id);
-        this.fetchTips(biz2.id);
-        this.fetchTips(biz3.id);
-        this.fetchPhotos(this.state.matchBiz1.id);
-        this.fetchPhotos(this.state.matchBiz2.id);
-        this.fetchPhotos(this.state.matchBiz3.id);
+        this.setState({
+          matchBiz1: biz1,
+          matchBiz2: biz2,
+          matchBiz3: biz3,
+          tip1: biz1 && biz1.tip_text,
+          tip2: biz2 && biz2.tip_text,
+          tip3: biz3 && biz3.tip_text,
+          photo1: biz1 && biz1.encoded_photo,
+          photo2: biz2 && biz2.encoded_photo,
+          photo3: biz3 && biz3.encoded_photo,
+          starRating1: biz1 && this.getStars(biz1.stars),
+          starRating2: biz2 && this.getStars(biz2.stars),
+          starRating3: biz3 && this.getStars(biz3.stars)
+        });
       })
       .catch(err => {
         console.log(err, "error fetch postalCode axios");
@@ -138,7 +142,7 @@ class App extends React.Component {
       });
   }
 
-  setStars(stars) {
+  getStars(stars) {
     if (stars === 1) {
       if (this.state.starRating1 === null) {
         this.setState({
