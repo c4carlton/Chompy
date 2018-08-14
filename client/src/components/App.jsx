@@ -5,46 +5,80 @@ import axios from "axios";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      business: [{}],
-      postalCode: Number,
-      matchBiz1: [{}],
-      matchBiz2: [{}],
-      matchBiz3: [{}],
-      tip1: null,
-      tip2: null,
-      tip3: null,
-      photo1: null,
-      photo2: null,
-      photo3: null,
-      image1: [{}],
-      image2: [{}],
-      image3: [{}],
-      starRating1: null,
-      starRating2: null,
-      starRating3: null
-    };
+    this.id = props.businessId;
+    this.initialState = props.initialState;
+    if (props.initialState && props.initialState.loaded) {
+      this.state = {
+        business: props.initialState.business,
+        postalCode: props.initialState.postal_code,
+        matchBiz1: props.initialState.business1,
+        matchBiz2: props.initialState.business2,
+        matchBiz3: props.initialState.business3,
+        tip1:
+          props.initialState.business1 && props.initialState.business1.tip_text,
+        tip2:
+          props.initialState.business2 && props.initialState.business2.tip_text,
+        tip3:
+          props.initialState.business3 && props.initialState.business3.tip_text,
+        photo1:
+          props.initialState.business1 &&
+          props.initialState.business1.encoded_photo,
+        photo2:
+          props.initialState.business2 &&
+          props.initialState.business2.encoded_photo,
+        photo3:
+          props.initialState.business3 &&
+          props.initialState.business3.encoded_photo,
+        starRating1:
+          props.initialState.business1 &&
+          this.getStars(props.initialState.business1.stars),
+        starRating2:
+          props.initialState.business2 &&
+          this.getStars(props.initialState.business2.stars),
+        starRating3:
+          props.initialState.business3 &&
+          this.getStars(props.initialState.business3.stars)
+      };
+    } else {
+      this.state = {
+        business: [{}],
+        postalCode: Number,
+        matchBiz1: [{}],
+        matchBiz2: [{}],
+        matchBiz3: [{}],
+        tip1: null,
+        tip2: null,
+        tip3: null,
+        photo1: null,
+        photo2: null,
+        photo3: null,
+        image1: [{}],
+        image2: [{}],
+        image3: [{}],
+        starRating1: null,
+        starRating2: null,
+        starRating3: null
+      };
+    }
   }
 
   componentDidMount() {
-    var url = window.location.href.split("/").pop();
-    url =
-      url.charAt(url.length - 1) === "/" ? url.substr(0, url.length - 1) : url;
-    url = url.split("?");
-    axios
-      .get("/sidebar/business/" + url[0])
-      .then(response => {
-        this.setState({ business: response.data });
-      })
-      .then(() => {
-        var postalCode = this.state.business[0].postal_code;
-        var bizId = this.state.business[0].id;
-        this.setState({ postalCode: postalCode });
-        this.fetchBusinessIds(postalCode);
-      })
-      .catch(err => {
-        console.log(err, "this is the error in the componentDidMount");
-      });
+    if (!this.props.initialState || !this.props.initialState.loaded) {
+      axios
+        .get(`/api/sidebar/business/${this.id}`)
+        .then(response => {
+          this.setState({ business: response.data });
+        })
+        .then(() => {
+          const postalCode = this.state.business[0].postal_code;
+          const bizId = this.state.business[0].id;
+          this.setState({ postalCode: postalCode });
+          this.fetchBusinessIds(postcalCode);
+        })
+        .catch(err => {
+          console.log(err, "this is the error in componentDidMount");
+        });
+    }
   }
 
   fetchBusinessIds(postalCode) {
