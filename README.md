@@ -1,6 +1,6 @@
-# Chompy - Bottom-right-sidebar
+# Chompy A modular restaurant review app show photos, location and reviews
 
-Bottom right sidebar (People also viewed, Lists including..., You might also consider, Nearby...)
+Tech Stack: JavaScript, React, Express.js, Node.js, MySQL, Docker, Jest, Enzyme
 
 #Table of Contents
 
